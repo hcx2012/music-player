@@ -3,6 +3,25 @@
 	<head>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 		<script>
+			function params(url, obj) {
+				let result = '';
+				let item;
+				if (url.includes("?")) {
+					for (item in obj) {
+						if (obj[item] && String(obj[item])) {
+							result += `&${item}=${obj[item]}`;
+						}
+					}
+				}else{
+					result += "?"
+					for (item in obj) {
+						if (obj[item] && String(obj[item])) {
+							result += `&${item}=${obj[item]}`;
+						}
+					}
+				}
+				return url + result;
+			}
 			var $_GET = (function(){
 						    var url = window.document.location.href.toString(); //获取的完整url
 						    var u = url.split("?");
@@ -19,7 +38,7 @@
 						    }
 						})();
 			$(document).ready(function(){
-				$("iframe").attr("src","style"+$_GET["style"]+".html");
+				$("iframe").attr("src",params("style"+$_GET["style"]+".html",$_GET));
 				var height = $(window).height()-30;
 			    $('#id1').height(height);
 			})
