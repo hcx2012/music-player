@@ -20,11 +20,11 @@
 						})();
 			$(document).ready(function(){
 				$("iframe").attr("src","style"+$_GET["style"]+".html");
-				var height = $(window).height();
+				var height = $(window).height()-30;
 			    $('#id1').height(height);
 			})
 			function changeFrameHeight(){
-			    $('#id1').height($(window).height());
+			    $('#id1').height($(window).height()-30);
 			}
 			window.onresize=function(){
 			    changeFrameHeight();
