@@ -14,9 +14,12 @@
 					}
 				}else{
 					result += "?"
+					let num=0;
 					for (item in obj) {
 						if (obj[item] && String(obj[item])) {
-							result += `&${item}=${obj[item]}`;
+							if(num==0)result +  `${item}=${obj[item]}`;
+							else result += `&${item}=${obj[item]}`;
+							num+=1;
 						}
 					}
 				}
